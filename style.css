@@ -144,3 +144,9 @@ main section .right .filter_item input[type="range"]::-moz-range-track {
     height: 3px;
     border-radius: 2px;
 }
+
+canvas{
+    display: none;
+    max-width: 100%;
+    max-height: 70vh;
+}
