@@ -46,4 +46,41 @@
     --border-radius-lg: 0.3rem;
     --border-radius-xl: 0.4rem;
     --border-radius-2xl: 0.5rem;
+
+    /* gradients */
+    --gradient-bg-main: linear-gradient(135deg, #0f172a, #020617);
+    --gradient-primary-btn: linear-gradient(135deg, #6366f1, #4f46e5);
+    --gradient-danger-btn: linear-gradient(135deg, #ef4444, #dc2626);
+    --gradient-success-btn: linear-gradient(135deg, #22c55e, #16a34a);
+
+    /* glass */
+    --glass-bg-light: rgba(255, 255, 255, 0.05);
+    --glass-bg-medium: rgba(255, 255, 255, 0.06);
+    --glass-border-light: rgba(255, 255, 255, 0.1);
+    --glass-border-medium: rgba(255, 255, 255, 0.12);
+    --glass-blur-sm: blur(10px);
+    --glass-blur-md: blur(12px);
+
+    /* shadows */
+    --shadow-primary: 0 10px 25px rgba(99, 102, 241, 0.35);
+
+    /* slider */
+    --slider-track-color: #6366f1;
+    --slider-thumb-color: #ffffff;
+    --slider-thumb-ring: rgba(99, 102, 241, 0.35);
+
+    /* radius (extended) */
+    --radius-sm: 0.6rem;
+    --radius-md: 0.75rem;
+    --radius-lg: 1rem;
+    --radius-xl: 1.25rem;
+
+    /* spacing */
+    --gap-sm: 0.5rem;
+    --gap-md: 0.75rem;
+    --gap-lg: 1.25rem;
+    --gap-xl: 1.5rem;
+
+    /* text */
+    --text-light: #e5e7eb;
 }
