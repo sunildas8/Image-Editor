@@ -41,7 +41,7 @@ let filter = {
         max: 100,
         unit: '%',
     },
-    opactiy: {
+    opacity: {
         value: 100,
         min: 0,
         max: 100,
@@ -62,6 +62,7 @@ const uploadImage = document.querySelector('#upload_image');
 const canvasCtx = imageCanvas.getContext('2d');
 const restButton = document.querySelector('#rest_btn');
 const downloadButton = document.querySelector('#download_btn');
+const presetsContainer = document.querySelector('.presets');
 let file = null;
 let image = null;
 
@@ -127,7 +128,7 @@ function applyFilter() {
     blur(${filter.blur.value}${filter.blur.unit})
     grayscale(${filter.grayscale.value}${filter.grayscale.unit})
     sepia(${filter.sepia.value}${filter.sepia.unit})
-    opacity(${filter.opactiy.value}${filter.opactiy.unit})
+    opacity(${filter.opacity.value}${filter.opacity.unit})
     invert(${filter.invert.value}${filter.invert.unit})`.trim();
     canvasCtx.drawImage(image, 0, 0)
 }
@@ -176,7 +177,7 @@ restButton.addEventListener('click', () => {
         max: 100,
         unit: '%',
     },
-    opactiy: {
+    opacity: {
         value: 100,
         min: 0,
         max: 100,
@@ -202,3 +203,145 @@ downloadButton.addEventListener('click', () => {
     link.href = imageCanvas.toDataURL();
     link.click();
 });
+
+const presets = {
+    normal: {
+        brightness: 100,
+        contrast: 100,
+        saturation: 100,
+        hueRotation: 0,
+        blur: 0,
+        grayscale: 0,
+        sepia: 0,
+        opacity: 100,
+        invert: 0,
+    },
+
+    drama: {
+        brightness: 105,
+        contrast: 140,
+        saturation: 120,
+        hueRotation: 0,
+        blur: 0,
+        grayscale: 0,
+        sepia: 0,
+        opacity: 100,
+        invert: 0,
+    },
+
+    vintage: {
+        brightness: 110,
+        contrast: 90,
+        saturation: 80,
+        hueRotation: 10,
+        blur: 0,
+        grayscale: 10,
+        sepia: 40,
+        opacity: 100,
+        invert: 0,
+    },
+
+    oldSchool: {
+        brightness: 95,
+        contrast: 120,
+        saturation: 70,
+        hueRotation: 0,
+        blur: 0,
+        grayscale: 30,
+        sepia: 60,
+        opacity: 100,
+        invert: 0,
+    },
+
+    noir: {
+        brightness: 90,
+        contrast: 150,
+        saturation: 0,
+        hueRotation: 0,
+        blur: 0,
+        grayscale: 100,
+        sepia: 0,
+        opacity: 100,
+        invert: 0,
+    },
+
+    faded: {
+        brightness: 115,
+        contrast: 85,
+        saturation: 90,
+        hueRotation: 0,
+        blur: 0,
+        grayscale: 10,
+        sepia: 15,
+        opacity: 100,
+        invert: 0,
+    },
+
+    warm: {
+        brightness: 105,
+        contrast: 110,
+        saturation: 115,
+        hueRotation: -10,
+        blur: 0,
+        grayscale: 0,
+        sepia: 20,
+        opacity: 100,
+        invert: 0,
+    },
+
+    cool: {
+        brightness: 100,
+        contrast: 105,
+        saturation: 110,
+        hueRotation: 15,
+        blur: 0,
+        grayscale: 0,
+        sepia: 0,
+        opacity: 100,
+        invert: 0,
+    },
+
+    retroPop: {
+        brightness: 110,
+        contrast: 130,
+        saturation: 150,
+        hueRotation: -20,
+        blur: 0,
+        grayscale: 0,
+        sepia: 10,
+        opacity: 100,
+        invert: 0,
+    },
+
+    dreamy: {
+        brightness: 120,
+        contrast: 90,
+        saturation: 110,
+        hueRotation: 0,
+        blur: 2,
+        grayscale: 0,
+        sepia: 10,
+        opacity: 100,
+        invert: 0,
+    },
+};
+
+
+Object.keys(presets).forEach(presetName => {
+    const presetButton = document.createElement('button');
+    presetButton.classList.add('btn');
+    presetButton.innerText = presetName;
+    presetsContainer.appendChild(presetButton);
+
+    presetButton.addEventListener('click', () => {
+        const preset = presets[presetName] 
+        
+        Object.keys(preset).forEach(filtertName => {
+            filter[filtertName].value = preset[filtertName]
+        })
+
+        applyFilter();
+        filterContainer.innerHTML = '';
+        createFilter();
+    })
+})
